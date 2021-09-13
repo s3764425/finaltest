@@ -1,0 +1,74 @@
+---
+title: "Blur"
+description: "Utilities for applying blur filters to an element."
+featureVersion: 'v2.1+'
+---
+
+import { Variants } from '@/components/Variants'
+import { Disabling } from '@/components/Disabling'
+
+export const classes = {
+  plugin: function () {
+    return function ({ addUtilities }) {
+      addUtilities({
+        '.blur-none': { '--tw-blur': 'blur(0)' },
+        '.blur-sm': { '--tw-blur': 'blur(4px)' },
+        '.blur': { '--tw-blur': 'blur(8px)' },
+        '.blur-md': { '--tw-blur': 'blur(12px)' },
+        '.blur-lg': { '--tw-blur': 'blur(16px)' },
+        '.blur-xl': { '--tw-blur': 'blur(24px)' },
+        '.blur-2xl': { '--tw-blur': 'blur(40px)' },
+        '.blur-3xl': { '--tw-blur': 'blur(64px)' },
+      })
+    }
+  }
+}
+
+## Usage
+
+Use the `blur-{amount?}` utilities alongside the `filter` utility to blur an element.
+
+```html
+<div class="filter blur-lg ...">
+  <!-- ... -->
+</div>
+```
+
+## Responsive
+
+To control an element's blur at a specific breakpoint, add a `{screen}:` prefix to any existing blur utility. For example, use `md:blur-lg` to apply the `blur-lg` utility at only medium screen sizes and above.
+
+```html
+<div class="filter blur-sm **md:blur-lg** ...">
+  <!-- ... -->
+</div>
+```
+
+For more information about Tailwind's responsive design features, check out the [Responsive Design](/docs/responsive-design) documentation.
+
+## Customizing
+
+You can customize which `blur` utilities are generated using the `blur` key in the `theme` section of your `tailwind.config.js` file.
+
+```diff-js
+  // tailwind.config.js
+  module.exports = {
+    theme: {
++     extend: {
++       blur: {
++         xs: '2px',
++       }
++     }
+    }
+  }
+```
+
+Learn more about customizing the default theme in the [theme customization documentation](/docs/theme#customizing-the-default-theme).
+
+### Variants
+
+<Variants plugin="blur" name="blur" />
+
+### Disabling
+
+<Disabling plugin="blur" name="blur" />

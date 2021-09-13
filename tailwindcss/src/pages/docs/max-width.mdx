@@ -1,0 +1,115 @@
+---
+title: "Max-Width"
+description: "Utilities for setting the maximum width of an element"
+---
+
+import plugin from 'tailwindcss/lib/plugins/maxWidth'
+import { Variants } from '@/components/Variants'
+import { Disabling } from '@/components/Disabling'
+import { numbersFirst } from '@/utils/sortClasses'
+
+export const classes = {
+  plugin,
+  sort: numbersFirst,
+}
+
+## Usage
+
+Set the maximum width of an element using the `max-w-{size}` utilities.
+
+```html emerald resizable
+<template preview>
+  <div class="max-w-md mx-auto rounded-md h-16 bg-emerald-500 select-none"></div>
+</template>
+
+<div class="**max-w-md** mx-auto ...">
+  <!-- ... -->
+</div>
+```
+
+## Reading width
+
+The `max-w-prose` utility gives an element a max-width optimized for readability and adapts based on the font size.
+
+```html purple
+<template preview>
+  <div class="max-w-prose text-sm text-purple-700 p-6">
+    <p>Dolore iste eaque molestias. Eius iure ut eaque accusantium. Voluptas repellendus nobis. Saepe nam accusantium magni veniam qui enim mollitia excepturi sapiente.</p>
+  </div>
+  <div class="max-w-prose text-base text-purple-700 p-6">
+    <p>Dolore iste eaque molestias. Eius iure ut eaque accusantium. Voluptas repellendus nobis. Saepe nam accusantium magni veniam qui enim mollitia excepturi sapiente.</p>
+  </div>
+  <div class="max-w-prose text-xl text-purple-700 p-6">
+    <p>Dolore iste eaque molestias. Eius iure ut eaque accusantium. Voluptas repellendus nobis. Saepe nam accusantium magni veniam qui enim mollitia excepturi sapiente.</p>
+  </div>
+</template>
+
+<div class="text-sm **max-w-prose** ...">
+  <p>Dolore iste eaque molestias. Eius iure ut eaque accusantium. Voluptas repellendus nobis. Saepe nam accusantium magni veniam qui enim mollitia excepturi sapiente.</p>
+</div>
+
+<div class="text-base **max-w-prose** ...">
+  <p>Dolore iste eaque molestias. Eius iure ut eaque accusantium. Voluptas repellendus nobis. Saepe nam accusantium magni veniam qui enim mollitia excepturi sapiente.</p>
+</div>
+
+<div class="text-xl **max-w-prose** ...">
+  <p>Dolore iste eaque molestias. Eius iure ut eaque accusantium. Voluptas repellendus nobis. Saepe nam accusantium magni veniam qui enim mollitia excepturi sapiente.</p>
+</div>
+```
+
+## Constraining to your breakpoints
+
+The `max-w-screen-{breakpoint}` classes can be used to give an element a max-width matching a specific breakpoint. These values are automatically derived from the [`theme.screens` section](/docs/theme#screens) of your `tailwind.config.js` file.
+
+```html
+<div class="max-w-screen-2xl">
+  <!-- ... -->
+</div>
+```
+
+---
+
+## Responsive
+
+To control the max-width of an element at a specific breakpoint, add a `{screen}:` prefix to any existing max-width utility.
+
+```html
+<div class="max-w-sm **md:max-w-lg** ...">
+  <!-- ... -->
+</div>
+```
+
+For more information about Tailwind's responsive design features, check out the [Responsive Design](/docs/responsive-design) documentation.
+
+---
+
+## Customizing
+
+### Max-Width Scale
+
+Customize Tailwind's default max-width scale for the `max-w-*` classes in the `theme.maxWidth` section of your `tailwind.config.js` file.
+
+```diff-js
+  // tailwind.config.js
+  module.exports = {
+    theme: {
+      maxWidth: {
++       '1/4': '25%',
++       '1/2': '50%',
++       '3/4': '75%',
+      }
+    }
+  }
+```
+
+The `max-w-screen-*` classes are derived from the [`theme.screens` section](/docs/theme#screens) of your `tailwind.config.js` file.
+
+Learn more about customizing the default theme in the [theme customization documentation](/docs/theme#customizing-the-default-theme).
+
+### Variants
+
+<Variants plugin="maxWidth" name="max-width" />
+
+### Disabling
+
+<Disabling plugin="maxWidth" name="max-width" />
